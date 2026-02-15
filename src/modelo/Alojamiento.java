@@ -1,7 +1,7 @@
 package modelo;
 
 /**
- * 
+ *
  * author BERJANO MUÑOZ, RAFAEL
  * author BOZA VILLAR, RICARDO
  * author CALIXTO DEL HOYO, JUAN
@@ -12,10 +12,10 @@ public class Alojamiento {
     private int referencia;
     private String nombre;
     private String poblacion;
-    private Provincia provincia;
-    private TipoDeAlojamiento tipoDeAlojamiento;
-    private TipoDeUbicacion tipoDeUbicacion;
+    private String provincia;
     private int capacidad;
+    private int tipo;
+    private Ubicacion ubicacion;
     private boolean alquilado;
 
     public Alojamiento() {
@@ -24,7 +24,7 @@ public class Alojamiento {
     public int getReferencia() {
         return referencia;
     }
-    
+
     public void setReferencia(int referencia) {
         if (this.referencia != 0) {
             throw new IllegalStateException("La referencia no puede modificarse");
@@ -48,28 +48,12 @@ public class Alojamiento {
         this.poblacion = poblacion;
     }
 
-    public Provincia getProvincia() {
+    public String getProvincia() {
         return provincia;
     }
 
-    public void setProvincia(Provincia provincia) {
+    public void setProvincia(String provincia) {
         this.provincia = provincia;
-    }
-
-    public TipoDeAlojamiento getTipoDeAlojamiento() {
-        return tipoDeAlojamiento;
-    }
-
-    public void setTipoDeAlojamiento(TipoDeAlojamiento tipoDeAlojamiento) {
-        this.tipoDeAlojamiento = tipoDeAlojamiento;
-    }
-
-    public TipoDeUbicacion getTipoDeUbicacion() {
-        return tipoDeUbicacion;
-    }
-
-    public void setTipoDeUbicacion(TipoDeUbicacion tipoDeUbicacion) {
-        this.tipoDeUbicacion = tipoDeUbicacion;
     }
 
     public int getCapacidad() {
@@ -78,6 +62,22 @@ public class Alojamiento {
 
     public void setCapacidad(int capacidad) {
         this.capacidad = capacidad;
+    }
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
+
+    public Ubicacion getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(Ubicacion ubicacion) {
+        this.ubicacion = ubicacion;
     }
 
     public boolean isAlquilado() {

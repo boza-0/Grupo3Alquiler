@@ -4,8 +4,6 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
-import modelo.Provincia;
-import modelo.TipoDeAlojamiento;
 
 /**
  * 
@@ -37,9 +35,9 @@ public class VistaConsulta extends javax.swing.JFrame {
         tituloLabel = new javax.swing.JLabel();
         panelCentro = new javax.swing.JPanel();
         provinciaLabel = new javax.swing.JLabel();
-        provinciaComboBox = new javax.swing.JComboBox();
+        provinciaTxt = new javax.swing.JTextField();
         tipoAlojamientoLabel = new javax.swing.JLabel();
-        tipoAlojamientoComboBox = new javax.swing.JComboBox();
+        tipoDeAlojamientoComboBox = new javax.swing.JComboBox();
         tipoDeUbicacionLabel = new javax.swing.JLabel();
         enPoblacionCheckBox = new javax.swing.JCheckBox();
         aisladoCheckBox = new javax.swing.JCheckBox();
@@ -51,6 +49,8 @@ public class VistaConsulta extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Elija su alojamiento rural");
+        setMaximumSize(null);
+        setPreferredSize(new java.awt.Dimension(550, 350));
         setResizable(false);
 
         panelNorte.setBackground(java.awt.Color.white);
@@ -73,14 +73,11 @@ public class VistaConsulta extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         panelCentro.add(provinciaLabel, gridBagConstraints);
 
-        provinciaComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        provinciaComboBox.setPreferredSize(new java.awt.Dimension(100, 22));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        panelCentro.add(provinciaComboBox, gridBagConstraints);
+        provinciaTxt.setPreferredSize(new java.awt.Dimension(100, 20));
+        panelCentro.add(provinciaTxt, new java.awt.GridBagConstraints());
 
         tipoAlojamientoLabel.setText("Tipo Alojamiento:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -88,18 +85,19 @@ public class VistaConsulta extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         panelCentro.add(tipoAlojamientoLabel, gridBagConstraints);
 
-        tipoAlojamientoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        tipoAlojamientoComboBox.setPreferredSize(new java.awt.Dimension(100, 22));
+        tipoDeAlojamientoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        tipoDeAlojamientoComboBox.setPreferredSize(new java.awt.Dimension(100, 22));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        panelCentro.add(tipoAlojamientoComboBox, gridBagConstraints);
+        panelCentro.add(tipoDeAlojamientoComboBox, gridBagConstraints);
 
         tipoDeUbicacionLabel.setText("Ubicación:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridheight = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         panelCentro.add(tipoDeUbicacionLabel, gridBagConstraints);
 
         enPoblacionCheckBox.setBackground(java.awt.Color.white);
@@ -123,6 +121,7 @@ public class VistaConsulta extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         panelCentro.add(capacidadLabel, gridBagConstraints);
 
         capacidadTxt.setPreferredSize(new java.awt.Dimension(37, 20));
@@ -136,7 +135,6 @@ public class VistaConsulta extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.ipadx = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         panelCentro.add(personasLabel, gridBagConstraints);
 
@@ -182,6 +180,7 @@ public class VistaConsulta extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VistaConsulta().setVisible(true);
             }
@@ -198,16 +197,16 @@ public class VistaConsulta extends javax.swing.JFrame {
     private javax.swing.JPanel panelNorte;
     private javax.swing.JPanel panelSur;
     private javax.swing.JLabel personasLabel;
-    private javax.swing.JComboBox provinciaComboBox;
     private javax.swing.JLabel provinciaLabel;
-    private javax.swing.JComboBox tipoAlojamientoComboBox;
+    private javax.swing.JTextField provinciaTxt;
     private javax.swing.JLabel tipoAlojamientoLabel;
+    private javax.swing.JComboBox tipoDeAlojamientoComboBox;
     private javax.swing.JLabel tipoDeUbicacionLabel;
     private javax.swing.JLabel tituloLabel;
     // End of variables declaration//GEN-END:variables
     
-    public JComboBox<Provincia> getProvinciaComboBox() { return provinciaComboBox; }
-    public JComboBox<TipoDeAlojamiento> getTipoAlojamientoComboBox() { return tipoAlojamientoComboBox; }
+    public JTextField getProvinciaTxt() { return provinciaTxt; }
+    public JComboBox getTipoDeAlojamientoComboBox() { return tipoDeAlojamientoComboBox; }
     public JCheckBox getEnPoblacionCheckBox() { return enPoblacionCheckBox; }
     public JCheckBox getAisladoCheckBox() { return aisladoCheckBox; }
     public JTextField getCapacidadTxt() { return capacidadTxt; }

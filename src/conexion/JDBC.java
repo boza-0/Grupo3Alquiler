@@ -1,29 +1,28 @@
-package infraestructura;
+package conexion;
 
 import java.sql.*;
-import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Properties;
 
 /**
  * Componente JDBC
- * 
+ *
  * author BERJANO MUÑOZ, RAFAEL
  * author BOZA VILLAR, RICARDO
  * author CALIXTO DEL HOYO, JUAN
  * author GARCÍA MARCHENA, ÁLVARO
  */
 public class JDBC {
-    
+
     private static JDBC instancia;
 
     private Connection conexion;
     private String sentenciaSQL;
     private ResultSet cursor;
-    
+
     private JDBC() {
-        // conexión a la BD
     }
-    
+
     public static JDBC getInstancia() {
         if (instancia == null) {
             instancia = new JDBC();
@@ -34,7 +33,18 @@ public class JDBC {
     public boolean setConexion(String rutaProperties) {
         try {
             Properties propiedades = new Properties();
-            propiedades.load(new FileInputStream(rutaProperties));
+
+            InputStream is = JDBC.class
+                    .getClassLoader()
+                    .getResourceAsStream(rutaProperties);
+
+            if (is == null) {
+                throw new RuntimeException(
+                        "No se encuentra el fichero de propiedades: " + rutaProperties
+                );
+            }
+
+            propiedades.load(is);
 
             String driver = propiedades.getProperty("driver");
             String url = propiedades.getProperty("url");
@@ -45,6 +55,7 @@ public class JDBC {
             conexion = DriverManager.getConnection(url, usuario, password);
 
             return true;
+
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -59,28 +70,25 @@ public class JDBC {
         this.sentenciaSQL = strSQL;
     }
 
-    public boolean ejecutarConsulta() {
+    /**
+     * Ejecuta la sentencia SQL almacenada.
+     * Si es un SELECT, deja disponible el ResultSet.
+     * Si es INSERT/UPDATE/DELETE, simplemente se ejecuta.
+     */
+    public boolean ejecutar() {
         try {
-            Statement sentencia = conexion.createStatement(
-                    ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY
-            );
-            cursor = sentencia.executeQuery(sentenciaSQL);
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
+            Statement sentencia = conexion.createStatement();
 
-    public boolean ejecutarConsultaActualizable() {
-        try {
-            Statement sentencia = conexion.createStatement(
-                    ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_UPDATABLE
-            );
-            cursor = sentencia.executeQuery(sentenciaSQL);
+            boolean tieneResultado = sentencia.execute(sentenciaSQL);
+
+            if (tieneResultado) {
+                cursor = sentencia.getResultSet();
+            } else {
+                cursor = null;
+            }
+
             return true;
+
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
@@ -95,6 +103,7 @@ public class JDBC {
         try {
             if (cursor != null) {
                 cursor.close();
+                cursor = null;
             }
             return true;
         } catch (SQLException e) {

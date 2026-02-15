@@ -1,43 +1,38 @@
 package modelo;
 
+/**
+ * Representa los criterios de búsqueda seleccionados por el usuario
+ *
+ * author BERJANO MUÑOZ, RAFAEL
+ * author BOZA VILLAR, RICARDO
+ * author CALIXTO DEL HOYO, JUAN
+ * author GARCÍA MARCHENA, ÁLVARO
+ */
 public class FiltroConsulta {
 
-    private Integer codigoProvincia;
-    private Integer codigoTipoAlojamiento;
-    private boolean ubicacionEnPoblacion;
-    private boolean ubicacionAislada;
+    private String provincia;
+    private TipoDeAlojamiento tipo;
     private Integer capacidadMinima;
+    private boolean enPoblacion;
+    private boolean aislado;
 
-    public Integer getCodigoProvincia() {
-        return codigoProvincia;
+    public FiltroConsulta() {
     }
 
-    public void setCodigoProvincia(Integer codigoProvincia) {
-        this.codigoProvincia = codigoProvincia;
+    public String getProvincia() {
+        return provincia;
     }
 
-    public Integer getCodigoTipoAlojamiento() {
-        return codigoTipoAlojamiento;
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
     }
 
-    public void setCodigoTipoAlojamiento(Integer codigoTipoAlojamiento) {
-        this.codigoTipoAlojamiento = codigoTipoAlojamiento;
+    public TipoDeAlojamiento getTipo() {
+        return tipo;
     }
 
-    public boolean isUbicacionEnPoblacion() {
-        return ubicacionEnPoblacion;
-    }
-
-    public void setUbicacionEnPoblacion(boolean ubicacionEnPoblacion) {
-        this.ubicacionEnPoblacion = ubicacionEnPoblacion;
-    }
-
-    public boolean isUbicacionAislada() {
-        return ubicacionAislada;
-    }
-
-    public void setUbicacionAislada(boolean ubicacionAislada) {
-        this.ubicacionAislada = ubicacionAislada;
+    public void setTipo(TipoDeAlojamiento tipo) {
+        this.tipo = tipo;
     }
 
     public Integer getCapacidadMinima() {
@@ -46,5 +41,21 @@ public class FiltroConsulta {
 
     public void setCapacidadMinima(Integer capacidadMinima) {
         this.capacidadMinima = capacidadMinima;
+    }
+
+    public boolean isEnPoblacion() {
+        return enPoblacion;
+    }
+
+    public void setEnPoblacion(boolean enPoblacion) {
+        this.enPoblacion = enPoblacion;
+    }
+
+    public boolean isAislado() {
+        return aislado;
+    }
+
+    public void setAislado(boolean aislado) {
+        this.aislado = aislado;
     }
 }

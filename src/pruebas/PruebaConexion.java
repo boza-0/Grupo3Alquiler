@@ -1,4 +1,6 @@
-import infraestructura.JDBC;
+package pruebas;
+
+import conexion.JDBC;
 
 /**
  * 
@@ -7,7 +9,7 @@ import infraestructura.JDBC;
  * author CALIXTO DEL HOYO, JUAN
  * author GARCÍA MARCHENA, ÁLVARO
  */
-public class PruebaJDBC {
+public class PruebaConexion {
 
     public static void main(String[] args) {
 

@@ -2,7 +2,7 @@ package modelo;
 
 /**
  * Representa un tipo de alojamiento rural
- * 
+ *
  * author BERJANO MUÑOZ, RAFAEL
  * author BOZA VILLAR, RICARDO
  * author CALIXTO DEL HOYO, JUAN

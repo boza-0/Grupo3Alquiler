@@ -1,6 +1,6 @@
 package dao;
 
-import infraestructura.JDBC;
+import conexion.JDBC;
 import modelo.TipoDeAlojamiento;
 
 import java.sql.ResultSet;
@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * DAO para la tabla tiposDeAlojamiento
- * 
+ * DAO para la tabla tipos
+ *
  * author BERJANO MUÑOZ, RAFAEL
  * author BOZA VILLAR, RICARDO
  * author CALIXTO DEL HOYO, JUAN
@@ -24,17 +24,18 @@ public class TipoDeAlojamientoDAO {
     }
 
     public List<TipoDeAlojamiento> obtenerTiposDeAlojamiento() {
+
         List<TipoDeAlojamiento> listaTipos = new ArrayList<>();
 
         try {
             jdbc.setSentenciaSQL(
-                "SELECT codigo, descripcion FROM tiposDeAlojamiento ORDER BY codigo"
+                "SELECT codigo, descripcion FROM tipos ORDER BY codigo"
             );
-            jdbc.ejecutarConsulta();
 
+            jdbc.ejecutar();
             ResultSet rs = jdbc.getCursor();
 
-            while (rs.next()) {
+            while (rs != null && rs.next()) {
                 TipoDeAlojamiento tipo = new TipoDeAlojamiento();
                 tipo.setCodigo(rs.getInt("codigo"));
                 tipo.setDescripcion(rs.getString("descripcion"));

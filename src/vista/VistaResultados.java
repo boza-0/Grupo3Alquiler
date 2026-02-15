@@ -39,10 +39,15 @@ public class VistaResultados extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Resultados de la búsqueda");
+        setMaximumSize(null);
+        setPreferredSize(new java.awt.Dimension(650, 420));
+        setResizable(false);
 
         panelCentro.setName(""); // NOI18N
-        panelCentro.setPreferredSize(new java.awt.Dimension(400, 150));
         panelCentro.setLayout(new java.awt.BorderLayout());
+
+        scrollResultados.setMaximumSize(null);
+        scrollResultados.setMinimumSize(null);
 
         tablaResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -59,15 +64,15 @@ public class VistaResultados extends javax.swing.JFrame {
 
         panelCentro.add(scrollResultados, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(panelCentro, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(panelCentro, java.awt.BorderLayout.CENTER);
 
         panelSur.setLayout(new java.awt.GridBagLayout());
 
         volverPrincipalButton.setText("Volver principal");
         volverPrincipalButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        volverPrincipalButton.setMaximumSize(new java.awt.Dimension(80, 23));
-        volverPrincipalButton.setMinimumSize(new java.awt.Dimension(80, 23));
-        volverPrincipalButton.setPreferredSize(new java.awt.Dimension(80, 23));
+        volverPrincipalButton.setMaximumSize(null);
+        volverPrincipalButton.setMinimumSize(null);
+        volverPrincipalButton.setPreferredSize(new java.awt.Dimension(120, 23));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 4;
         panelSur.add(volverPrincipalButton, gridBagConstraints);
@@ -75,14 +80,14 @@ public class VistaResultados extends javax.swing.JFrame {
         finalizarAlquilerButton.setText("Finalizar alquiler");
         finalizarAlquilerButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         finalizarAlquilerButton.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        finalizarAlquilerButton.setMaximumSize(new java.awt.Dimension(90, 23));
-        finalizarAlquilerButton.setMinimumSize(new java.awt.Dimension(90, 23));
-        finalizarAlquilerButton.setPreferredSize(new java.awt.Dimension(90, 23));
+        finalizarAlquilerButton.setMaximumSize(null);
+        finalizarAlquilerButton.setMinimumSize(null);
+        finalizarAlquilerButton.setPreferredSize(new java.awt.Dimension(120, 23));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 10;
         panelSur.add(finalizarAlquilerButton, gridBagConstraints);
 
-        getContentPane().add(panelSur, java.awt.BorderLayout.CENTER);
+        getContentPane().add(panelSur, java.awt.BorderLayout.SOUTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
